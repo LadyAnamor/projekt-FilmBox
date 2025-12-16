@@ -103,4 +103,44 @@ const filmy = [
 			'Na zámek v podhůří Krkonoš přijíždí jeho nový majitel Štěpán se svojí snoubenkou, krásnou komtesou Blankou, a mladším bratrem Adamem. Cestou kočár nešťastně srazí kolemjdoucí dívku, Adam jí pomůže a ona se do něj zamiluje. Na zámku Adam objeví starou vlašskou knihu, která by měla obsahovat cestu k pokladům. Tajemné značky vlašské knihy však nedokáže vyluštit ani národopisec Jiráček, který v kraji sbírá pověsti a nevychází z údivu nad tím, že zdejší lidé stále věří v Krakonoše. Na zámku se objeví záhadný cizinec a nabídne Štěpánovi, že jej k pokladu za určitých podmínek dovede. Výprava do hor může začít. Naplní se Liduščina láska k Adamovi? Jakou záhadu skrývá starý obraz na zámku Hůrka a co strašlivého se v horách kdysi odehrálo? A kdo je vlastně Krakonoš a jaké je jeho největší tajemství? (csfd.cz, Česká televize)',
 		premiera: '2022-12-24',
 	},
+			{
+		id: 'laska-nebeska',
+		nazev: 'Láska nebeská',
+		plakat: {
+			url: 'https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/168/274/168274460_vm1ckf.jpg',
+			sirka: 420,
+			vyska: 594,
+		},
+		ochutnavka: 'Dokonalá vánoční komedie.',
+		popis:
+			'Láska dostihne každého a většinou ve chvíli, kdy to nejméně čeká! V Londýně, pár týdnů před Štědrým dnem, začíná osm různých příběhů, jejichž protagonisté jsou více či méně spřízněni. Tyto londýnské životy se setkají, smísí, a nakonec vše vyvrcholí na Štědrý večer poznáním, že láska je ve skutečnosti všude kolem nás i kolem těch, kteří o ní pochybují.',
+		premiera: '2003-11-20',
+	},
 ]
+
+const seznamFilmu = document.querySelector('#seznam-filmu');
+seznamFilmu.innerHTML = '';
+
+filmy.forEach((film) => {
+	seznamFilmu.innerHTML +=
+`<div class="col">
+  <div class="card">
+    <img
+      src= ${film.plakat.url}
+      width="780"
+      height="520"
+      class="card-img-top"
+      alt="plakát"
+    />
+    <div class="card-body">
+      <h5 class="card-title">${film.nazev}</h5>
+      <p class="card-text">${film.ochutnavka}</p>
+      <a href="film.html" class="btn btn-primary">Přehrát</a>
+    </div>
+  </div>
+</div>`
+});
+
+
+
+
