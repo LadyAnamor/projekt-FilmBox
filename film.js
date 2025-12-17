@@ -114,6 +114,24 @@ const filmy = [
 		ochutnavka: 'Dokonalá vánoční komedie.',
 		popis:
 			'Láska dostihne každého a většinou ve chvíli, kdy to nejméně čeká! V Londýně, pár týdnů před Štědrým dnem, začíná osm různých příběhů, jejichž protagonisté jsou více či méně spřízněni. Tyto londýnské životy se setkají, smísí, a nakonec vše vyvrcholí na Štědrý večer poznáním, že láska je ve skutečnosti všude kolem nás i kolem těch, kteří o ní pochybují.',
-		premiera: '2003-11-20',
+		premiera: '2003-12-20',
 	},
 ]
+
+const filmId = window.location.hash.slice(1);
+
+const filmData = filmy.find((item) => item.id === filmId);
+
+const cardTitleElm = document.querySelector('#detail-filmu .card-title');
+cardTitleElm.textContent = filmData.nazev;
+
+const cardTextElm = document.querySelector('#detail-filmu .card-text');
+cardTextElm.textContent = filmData.popis;
+
+const posterImageElm = document.querySelector('#detail-filmu .col-md-5');
+posterImageElm.innerHTML = `<img 
+								src="${filmData.plakat.url}" 
+								alt="plakát" class="img-fluid rounded-start"
+								width="663"
+								height="909"
+							>`;
