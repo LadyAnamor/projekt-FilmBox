@@ -131,7 +131,30 @@ cardTextElm.textContent = filmData.popis;
 const posterImageElm = document.querySelector('#detail-filmu .col-md-5');
 posterImageElm.innerHTML = `<img 
 								src="${filmData.plakat.url}" 
-								alt="plakát" class="img-fluid rounded-start"
+								alt="plakát" 
+								class="img-fluid rounded-start"
 								width="663"
 								height="909"
-							>`;
+							/>`;
+
+const noteFormElm = document.querySelector('#note-form');
+
+
+noteFormElm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  
+  const messageInput = document.querySelector('#message-input');
+  const messageValue = messageInput.value;
+  const termsCheckbox = document.querySelector('#terms-checkbox')
+ 
+  if (messageValue === '') {
+	messageInput.classList.add('is-invalid');
+	messageInput.focus();
+  } else if (termsCheckbox.checked === false) {
+	  termsCheckbox.classList.add('is-invalid');
+	  termsCheckbox.focus();
+	} else {
+	  noteFormElm.innerHTML = `<p class="card-text">${messageValue}</p>`;
+	}
+  }
+);
