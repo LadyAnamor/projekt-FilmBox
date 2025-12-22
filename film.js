@@ -114,7 +114,7 @@ const filmy = [
 		ochutnavka: 'Dokonalá vánoční komedie.',
 		popis:
 			'Láska dostihne každého a většinou ve chvíli, kdy to nejméně čeká! V Londýně, pár týdnů před Štědrým dnem, začíná osm různých příběhů, jejichž protagonisté jsou více či méně spřízněni. Tyto londýnské životy se setkají, smísí, a nakonec vše vyvrcholí na Štědrý večer poznáním, že láska je ve skutečnosti všude kolem nás i kolem těch, kteří o ní pochybují.',
-		premiera: '2003-12-20',
+		premiera: '2025-12-21',
 	},
 ]
 
@@ -137,8 +137,30 @@ posterImageElm.innerHTML = `<img
 								height="909"
 							/>`;
 
-const noteFormElm = document.querySelector('#note-form');
+const premiereElm = document.querySelector('#premiera');
+const premiereDate = dayjs(filmData.premiera).startOf('day');
 
+premiereElm.innerHTML = `Premiéra <strong>${dayjs(premiereDate).format('D. M. YYYY')}</strong>, `;
+
+const todayDate = dayjs().startOf('day');
+
+const daysDiff = premiereDate.diff(todayDate, 'days')
+
+if (daysDiff === 0){
+	  premiereElm.innerHTML += `což je dnes.`;
+} else if (daysDiff === 1) {
+	  premiereElm.innerHTML += `což je zítra.`;
+} else if (daysDiff > 1 && daysDiff < 5) {
+	premiereElm.innerHTML += `což je za <strong>${daysDiff}</strong> dny.`;
+} else if (daysDiff >= 5){
+	  premiereElm.innerHTML += `což je za <strong>${daysDiff}</strong> dní.`;
+} else if (daysDiff === -1) {
+	  premiereElm.innerHTML += `což bylo včera.`;
+} else {
+	 premiereElm.innerHTML += `což bylo před <strong>${Math.abs(daysDiff)}</strong> dny.`;
+}
+
+const noteFormElm = document.querySelector('#note-form');
 
 noteFormElm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -158,3 +180,4 @@ noteFormElm.addEventListener('submit', (event) => {
 	}
   }
 );
+
